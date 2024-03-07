@@ -43,6 +43,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="E:\chats\android@@:google_sign_in_android::release"
+      jars="E:\chats\build\google_sign_in_android\.transforms\995cca5efe0a98dcefa507eb0e3762c8\transformed\out\jars\classes.jar;E:\chats\build\google_sign_in_android\.transforms\995cca5efe0a98dcefa507eb0e3762c8\transformed\out\jars\libs\R.jar"
+      resolved="io.flutter.plugins.googlesignin:google_sign_in_android:unspecified"
+      folder="E:\chats\build\google_sign_in_android\.transforms\995cca5efe0a98dcefa507eb0e3762c8\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="io.flutter:flutter_embedding_release:1.0.0-04817c99c9fd4956f27505204f7e344335810aed@jar"
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\io.flutter\flutter_embedding_release\1.0.0-04817c99c9fd4956f27505204f7e344335810aed\32809c8dc647f1ac834899bf9e489202692ad1b2\flutter_embedding_release-1.0.0-04817c99c9fd4956f27505204f7e344335810aed.jar"
       resolved="io.flutter:flutter_embedding_release:1.0.0-04817c99c9fd4956f27505204f7e344335810aed"/>
@@ -423,10 +436,10 @@
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlinx\kotlinx-coroutines-play-services\1.7.3\7087d47913cfb0062c9909dacbfc78fe44c5ecff\kotlinx-coroutines-play-services-1.7.3.jar"
       resolved="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3"/>
   <library
-      name="com.google.android.gms:play-services-auth-api-phone:17.4.0@aar"
-      jars="C:\Users\nour6\.gradle\caches\transforms-3\85612da7f763e42737800e64115b5e51\transformed\jetified-play-services-auth-api-phone-17.4.0\jars\classes.jar"
-      resolved="com.google.android.gms:play-services-auth-api-phone:17.4.0"
-      folder="C:\Users\nour6\.gradle\caches\transforms-3\85612da7f763e42737800e64115b5e51\transformed\jetified-play-services-auth-api-phone-17.4.0"
+      name="com.google.android.gms:play-services-auth:20.7.0@aar"
+      jars="C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\jars\classes.jar"
+      resolved="com.google.android.gms:play-services-auth:20.7.0"
+      folder="C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -436,10 +449,36 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.android.play:integrity:1.2.0@aar"
-      jars="C:\Users\nour6\.gradle\caches\transforms-3\9f1797f77580d43d0b5e852a9c0fe8da\transformed\jetified-integrity-1.2.0\jars\classes.jar"
-      resolved="com.google.android.play:integrity:1.2.0"
-      folder="C:\Users\nour6\.gradle\caches\transforms-3\9f1797f77580d43d0b5e852a9c0fe8da\transformed\jetified-integrity-1.2.0"
+      name="com.google.android.gms:play-services-auth-api-phone:18.0.1@aar"
+      jars="C:\Users\nour6\.gradle\caches\transforms-3\9ee8122b4cdadaa3cc91b4c70b063c1a\transformed\jetified-play-services-auth-api-phone-18.0.1\jars\classes.jar"
+      resolved="com.google.android.gms:play-services-auth-api-phone:18.0.1"
+      folder="C:\Users\nour6\.gradle\caches\transforms-3\9ee8122b4cdadaa3cc91b4c70b063c1a\transformed\jetified-play-services-auth-api-phone-18.0.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-auth-base:18.0.4@aar"
+      jars="C:\Users\nour6\.gradle\caches\transforms-3\ae8e536f246c00edb3d2f9cf5fb79f47\transformed\jetified-play-services-auth-base-18.0.4\jars\classes.jar"
+      resolved="com.google.android.gms:play-services-auth-base:18.0.4"
+      folder="C:\Users\nour6\.gradle\caches\transforms-3\ae8e536f246c00edb3d2f9cf5fb79f47\transformed\jetified-play-services-auth-base-18.0.4"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-fido:20.0.1@aar"
+      jars="C:\Users\nour6\.gradle\caches\transforms-3\87efe162e9bc44d3700a980622b1d9d4\transformed\jetified-play-services-fido-20.0.1\jars\classes.jar"
+      resolved="com.google.android.gms:play-services-fido:20.0.1"
+      folder="C:\Users\nour6\.gradle\caches\transforms-3\87efe162e9bc44d3700a980622b1d9d4\transformed\jetified-play-services-fido-20.0.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -488,6 +527,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="com.google.android.play:integrity:1.2.0@aar"
+      jars="C:\Users\nour6\.gradle\caches\transforms-3\9f1797f77580d43d0b5e852a9c0fe8da\transformed\jetified-integrity-1.2.0\jars\classes.jar"
+      resolved="com.google.android.play:integrity:1.2.0"
+      folder="C:\Users\nour6\.gradle\caches\transforms-3\9f1797f77580d43d0b5e852a9c0fe8da\transformed\jetified-integrity-1.2.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="com.google.android.gms:play-services-tasks:18.0.2@aar"
       jars="C:\Users\nour6\.gradle\caches\transforms-3\3b60e133432f1f730b3e44bb313734ab\transformed\jetified-play-services-tasks-18.0.2\jars\classes.jar"
       resolved="com.google.android.gms:play-services-tasks:18.0.2"
@@ -501,10 +553,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.android.gms:play-services-basement:18.1.0@aar"
-      jars="C:\Users\nour6\.gradle\caches\transforms-3\94c054f5931c837e5360b35357b32d11\transformed\jetified-play-services-basement-18.1.0\jars\classes.jar"
-      resolved="com.google.android.gms:play-services-basement:18.1.0"
-      folder="C:\Users\nour6\.gradle\caches\transforms-3\94c054f5931c837e5360b35357b32d11\transformed\jetified-play-services-basement-18.1.0"
+      name="com.google.android.gms:play-services-basement:18.2.0@aar"
+      jars="C:\Users\nour6\.gradle\caches\transforms-3\a4bbafb918d885afcf112a8c21b52a56\transformed\jetified-play-services-basement-18.2.0\jars\classes.jar"
+      resolved="com.google.android.gms:play-services-basement:18.2.0"
+      folder="C:\Users\nour6\.gradle\caches\transforms-3\a4bbafb918d885afcf112a8c21b52a56\transformed\jetified-play-services-basement-18.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -570,10 +622,6 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.firebase:firebase-annotations:16.2.0@jar"
-      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.firebase\firebase-annotations\16.2.0\ba0806703ca285d03fa9c888b5868f101134a501\firebase-annotations-16.2.0.jar"
-      resolved="com.google.firebase:firebase-annotations:16.2.0"/>
-  <library
       name="io.grpc:grpc-android:1.57.2@aar"
       jars="C:\Users\nour6\.gradle\caches\transforms-3\be2404dfdb4e3992410839270f4abf27\transformed\jetified-grpc-android-1.57.2\jars\classes.jar"
       resolved="io.grpc:grpc-android:1.57.2"
@@ -599,19 +647,6 @@
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\io.grpc\grpc-stub\1.57.2\df47b4eb69fb36940689649400c8e9cbf7c3dc2c\grpc-stub-1.57.2.jar"
       resolved="io.grpc:grpc-stub:1.57.2"/>
   <library
-      name="com.google.firebase:protolite-well-known-types:18.0.0@aar"
-      jars="C:\Users\nour6\.gradle\caches\transforms-3\c01628a75f32a72c9ff99e1bd717cb05\transformed\jetified-protolite-well-known-types-18.0.0\jars\classes.jar"
-      resolved="com.google.firebase:protolite-well-known-types:18.0.0"
-      folder="C:\Users\nour6\.gradle\caches\transforms-3\c01628a75f32a72c9ff99e1bd717cb05\transformed\jetified-protolite-well-known-types-18.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="io.grpc:grpc-core:1.57.2@jar"
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\io.grpc\grpc-core\1.57.2\2e04aac0fe659243f4ed5dbe4c2839e88408dffc\grpc-core-1.57.2.jar"
       resolved="io.grpc:grpc-core:1.57.2"/>
@@ -628,17 +663,50 @@
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\32.0.1-android\d3fe54a75aeaca33fc562a2a9c1dc181e54cc5e9\guava-32.0.1-android.jar"
       resolved="com.google.guava:guava:32.0.1-android"/>
   <library
+      name="com.google.guava:failureaccess:1.0.1@jar"
+      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar"
+      resolved="com.google.guava:failureaccess:1.0.1"/>
+  <library
       name="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava@jar"
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\b421526c5f297295adef1c886e5246c39d4ac629\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
       resolved="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"/>
   <library
-      name="javax.inject:javax.inject:1@jar"
-      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
-      resolved="javax.inject:javax.inject:1"/>
+      name="com.google.code.findbugs:jsr305:3.0.2@jar"
+      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar"
+      resolved="com.google.code.findbugs:jsr305:3.0.2"/>
+  <library
+      name="org.checkerframework:checker-qual:3.33.0@jar"
+      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-qual\3.33.0\de2b60b62da487644fc11f734e73c8b0b431238f\checker-qual-3.33.0.jar"
+      resolved="org.checkerframework:checker-qual:3.33.0"/>
   <library
       name="com.google.errorprone:error_prone_annotations:2.18.0@jar"
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.18.0\89b684257096f548fa39a7df9fdaa409d4d4df91\error_prone_annotations-2.18.0.jar"
       resolved="com.google.errorprone:error_prone_annotations:2.18.0"/>
+  <library
+      name="com.google.j2objc:j2objc-annotations:2.8@jar"
+      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\2.8\c85270e307e7b822f1086b93689124b89768e273\j2objc-annotations-2.8.jar"
+      resolved="com.google.j2objc:j2objc-annotations:2.8"/>
+  <library
+      name="com.google.firebase:firebase-annotations:16.2.0@jar"
+      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.firebase\firebase-annotations\16.2.0\ba0806703ca285d03fa9c888b5868f101134a501\firebase-annotations-16.2.0.jar"
+      resolved="com.google.firebase:firebase-annotations:16.2.0"/>
+  <library
+      name="com.google.firebase:protolite-well-known-types:18.0.0@aar"
+      jars="C:\Users\nour6\.gradle\caches\transforms-3\c01628a75f32a72c9ff99e1bd717cb05\transformed\jetified-protolite-well-known-types-18.0.0\jars\classes.jar"
+      resolved="com.google.firebase:protolite-well-known-types:18.0.0"
+      folder="C:\Users\nour6\.gradle\caches\transforms-3\c01628a75f32a72c9ff99e1bd717cb05\transformed\jetified-protolite-well-known-types-18.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="javax.inject:javax.inject:1@jar"
+      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+      resolved="javax.inject:javax.inject:1"/>
   <library
       name="com.squareup.okio:okio:1.17.5@jar"
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.17.5\34336f82f14dde1c0752fd5f0546dbf3c3225aba\okio-1.17.5.jar"
@@ -652,10 +720,6 @@
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.protobuf\protobuf-javalite\3.22.3\7df7200bce0ff77dc66dd063df79ff74c6114bfc\protobuf-javalite-3.22.3.jar"
       resolved="com.google.protobuf:protobuf-javalite:3.22.3"/>
   <library
-      name="com.google.code.findbugs:jsr305:3.0.2@jar"
-      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar"
-      resolved="com.google.code.findbugs:jsr305:3.0.2"/>
-  <library
       name="com.google.code.gson:gson:2.10.1@jar"
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.10.1\b3add478d4382b78ea20b1671390a858002feb6c\gson-2.10.1.jar"
       resolved="com.google.code.gson:gson:2.10.1"/>
@@ -667,16 +731,4 @@
       name="org.codehaus.mojo:animal-sniffer-annotations:1.23@jar"
       jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\org.codehaus.mojo\animal-sniffer-annotations\1.23\3c0daebd5f0e1ce72cc50c818321ac957aeb5d70\animal-sniffer-annotations-1.23.jar"
       resolved="org.codehaus.mojo:animal-sniffer-annotations:1.23"/>
-  <library
-      name="com.google.guava:failureaccess:1.0.1@jar"
-      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar"
-      resolved="com.google.guava:failureaccess:1.0.1"/>
-  <library
-      name="org.checkerframework:checker-qual:3.33.0@jar"
-      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-qual\3.33.0\de2b60b62da487644fc11f734e73c8b0b431238f\checker-qual-3.33.0.jar"
-      resolved="org.checkerframework:checker-qual:3.33.0"/>
-  <library
-      name="com.google.j2objc:j2objc-annotations:2.8@jar"
-      jars="C:\Users\nour6\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\2.8\c85270e307e7b822f1086b93689124b89768e273\j2objc-annotations-2.8.jar"
-      resolved="com.google.j2objc:j2objc-annotations:2.8"/>
 </libraries>

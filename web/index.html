@@ -19,6 +19,7 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
+  <meta name="google-signin-client_id" content="737029007501-kku72rcbpp1rlhe5qcrmi7hispoc64gm.apps.googleusercontent.com">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -55,5 +56,26 @@
       });
     });
   </script>
+
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA-Uiwk3YbRO-cEgeiQCeZF_5JX_YZm3FM",
+    authDomain: "flash-chat-8399d.firebaseapp.com",
+    projectId: "flash-chat-8399d",
+    storageBucket: "flash-chat-8399d.appspot.com",
+    messagingSenderId: "737029007501",
+    appId: "1:737029007501:web:68c80019cb5ef72b459ac4"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.chats.app-mergeDebugResources-13:/values-hu/values-hu.xml",
+            "outputFile": "com.example.chats.app-mergeDebugResources-16:/values-hu/values-hu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\3aa83f8337416042d21370d93f3ec5ef\\transformed\\jetified-play-services-base-18.0.1\\res\\values-hu\\values.xml",
@@ -38,23 +38,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\94c054f5931c837e5360b35357b32d11\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-hu\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "172",
-                        "endOffsets": "367"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1135",
-                        "endColumns": "176",
-                        "endOffsets": "1307"
-                    }
-                },
-                {
                     "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\1b9e6c9ca871cab036b5488721264692\\transformed\\browser-1.4.0\\res\\values-hu\\values-hu.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -69,6 +52,23 @@
                         "startOffsets": "2483,2579,2680,2795",
                         "endColumns": "95,100,114,103",
                         "endOffsets": "2574,2675,2790,2894"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\a4bbafb918d885afcf112a8c21b52a56\\transformed\\jetified-play-services-basement-18.2.0\\res\\values-hu\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "172",
+                        "endOffsets": "367"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1135",
+                        "endColumns": "176",
+                        "endOffsets": "1307"
                     }
                 }
             ]

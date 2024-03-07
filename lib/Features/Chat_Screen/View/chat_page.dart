@@ -11,7 +11,6 @@ import '../Data/message.dart';
 
 class ChatPage extends StatelessWidget {
   static String id = 'ChatPage';
-  List<Message> messagesList = [];
   final _controller = ScrollController();
 
 
@@ -23,8 +22,8 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ChatCubit Cubit = BlocProvider.of<ChatCubit>(context);
     var email = ModalRoute
-        .of(context)!
-        .settings
+        .of(context)
+        ?.settings
         .arguments;
 
     return Scaffold(
@@ -48,20 +47,17 @@ class ChatPage extends StatelessWidget {
           Expanded(
             child: BlocConsumer<ChatCubit, ChatState>(
               listener: (context, state) {
-                if (state is ChatSuccess)
-                  {
-                   messagesList = state.messages;
-                  }
+
               },
               builder: (context, state) {
                 return ListView.builder(
                     reverse: true,
                     controller: _controller,
-                    itemCount: messagesList.length,
+                    itemCount: Cubit.messagesList.length,
                     itemBuilder: (context, index) {
-                      return messagesList[index].id == email ? ChatBuble(
-                        message: messagesList[index],
-                      ) : ChatBubleForFriend(message: messagesList[index]);
+                      return Cubit.messagesList[index].id == email ? ChatBuble(
+                        message: Cubit.messagesList[index],
+                      ) : ChatBubleForFriend(message: Cubit.messagesList[index]);
                     });
               },
             ),
@@ -71,6 +67,7 @@ class ChatPage extends StatelessWidget {
             child: TextField(
               controller: controller,
               onSubmitted: (data) {
+                print("email is : $email");
                 Cubit.sendmessage(message: data, );
                 controller.clear();
                 _controller.animateTo(0,

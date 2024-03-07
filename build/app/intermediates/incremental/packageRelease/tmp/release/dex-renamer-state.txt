@@ -1,4 +1,4 @@
-#Sat Mar 02 21:52:44 EET 2024
+#Wed Mar 06 16:24:15 EET 2024
 base.0=E\:\\chats\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

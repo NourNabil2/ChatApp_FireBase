@@ -37,11 +37,15 @@ dependencies:
   cupertino_icons: ^1.0.6
   bloc:
   bloc_provider:
+  google_sign_in: ^6.2.1
   flutter_bloc:
   modal_progress_hud_nsn:
   firebase_core: ^2.25.5
   firebase_auth:
   cloud_firestore:
+  firebase_storage:
+  firebase_messaging:
+  cached_network_image:
 dev_dependencies:
   flutter_test:
     sdk: flutter

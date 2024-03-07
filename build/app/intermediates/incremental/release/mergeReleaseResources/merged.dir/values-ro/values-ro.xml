@@ -8,7 +8,7 @@
     <string msgid="7215213145546190223" name="common_google_play_services_install_title">Descărcați serviciile Google Play</string>
     <string name="common_google_play_services_notification_channel_name">Disponibilitatea serviciilor Google Play</string>
     <string name="common_google_play_services_notification_ticker">Eroare a serviciilor Google Play</string>
-    <string name="common_google_play_services_unknown_issue">%1$s întâmpină probleme privind serviciile Google Play. Încercați din nou.</string>
+    <string name="common_google_play_services_unknown_issue">%1$s întâmpină probleme privind serviciile Google Play. Încearcă din nou.</string>
     <string name="common_google_play_services_unsupported_text">%1$s nu va rula fără serviciile Google Play, care nu sunt acceptate de dispozitivul dvs.</string>
     <string msgid="6556509956452265614" name="common_google_play_services_update_button">Actualizați</string>
     <string msgid="9053896323427875356" name="common_google_play_services_update_text">%1$s nu va rula decât dacă actualizați serviciile Google Play.</string>

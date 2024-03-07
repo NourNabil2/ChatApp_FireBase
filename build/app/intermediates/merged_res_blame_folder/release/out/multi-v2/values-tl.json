@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.chats.app-mergeReleaseResources-13:/values-tl/values-tl.xml",
+            "outputFile": "com.example.chats.app-mergeReleaseResources-14:/values-tl/values-tl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\3aa83f8337416042d21370d93f3ec5ef\\transformed\\jetified-play-services-base-18.0.1\\res\\values-tl\\values.xml",
@@ -18,6 +18,23 @@
                         "startOffsets": "55,162,338,476,585,743,879,1001,1259,1438,1545,1723,1861,2023,2202,2270,2336",
                         "endColumns": "106,175,137,108,157,135,121,112,178,106,177,137,161,178,67,65,80",
                         "endOffsets": "157,333,471,580,738,874,996,1109,1433,1540,1718,1856,2018,2197,2265,2331,2412"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\a4bbafb918d885afcf112a8c21b52a56\\transformed\\jetified-play-services-basement-18.2.0\\res\\values-tl\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "140",
+                        "endOffsets": "335"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1114",
+                        "endColumns": "144",
+                        "endOffsets": "1254"
                     }
                 },
                 {
@@ -52,23 +69,6 @@
                         "startOffsets": "2417,2520,2625,2736",
                         "endColumns": "102,104,110,104",
                         "endOffsets": "2515,2620,2731,2836"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\94c054f5931c837e5360b35357b32d11\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-tl\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "140",
-                        "endOffsets": "335"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1114",
-                        "endColumns": "144",
-                        "endOffsets": "1254"
                     }
                 }
             ]

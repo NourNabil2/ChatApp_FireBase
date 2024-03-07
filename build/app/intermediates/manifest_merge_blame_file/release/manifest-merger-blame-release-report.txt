@@ -31,8 +31,8 @@
 23    </queries>
 24
 25    <uses-permission android:name="android.permission.INTERNET" />
-25-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\nour6\.gradle\caches\transforms-3\e25ef7cfa1a509a7d28da42dd5965283\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:25:5-67
-25-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\nour6\.gradle\caches\transforms-3\e25ef7cfa1a509a7d28da42dd5965283\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:25:22-64
+25-->[:google_sign_in_android] E:\chats\build\google_sign_in_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-67
+25-->[:google_sign_in_android] E:\chats\build\google_sign_in_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-64
 26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 26-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\nour6\.gradle\caches\transforms-3\e25ef7cfa1a509a7d28da42dd5965283\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:26:5-79
 26-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\nour6\.gradle\caches\transforms-3\e25ef7cfa1a509a7d28da42dd5965283\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:26:22-76
@@ -251,20 +251,45 @@
 146-->[androidx.window:window:1.0.0-beta04] C:\Users\nour6\.gradle\caches\transforms-3\d97cf3ffa6f05f8e8de8b41da1cca67f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 147
 148        <activity
-148-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-149            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-149-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-150            android:exported="false"
-150-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-151            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-151-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
-152
-153        <meta-data
-153-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\nour6\.gradle\caches\transforms-3\94c054f5931c837e5360b35357b32d11\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
-154            android:name="com.google.android.gms.version"
-154-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\nour6\.gradle\caches\transforms-3\94c054f5931c837e5360b35357b32d11\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
-155            android:value="@integer/google_play_services_version" />
-155-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\nour6\.gradle\caches\transforms-3\94c054f5931c837e5360b35357b32d11\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
-156    </application>
-157
-158</manifest>
+148-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:23:9-27:75
+149            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+149-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:24:13-93
+150            android:excludeFromRecents="true"
+150-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:25:13-46
+151            android:exported="false"
+151-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:26:13-37
+152            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+152-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:27:13-72
+153        <!--
+154            Service handling Google Sign-In user revocation. For apps that do not integrate with
+155            Google Sign-In, this service will never be started.
+156        -->
+157        <service
+157-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:33:9-37:51
+158            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+158-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:34:13-89
+159            android:exported="true"
+159-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:35:13-36
+160            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+160-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:36:13-107
+161            android:visibleToInstantApps="true" />
+161-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\nour6\.gradle\caches\transforms-3\9084531c600d9a5181dc27dd52c77f99\transformed\jetified-play-services-auth-20.7.0\AndroidManifest.xml:37:13-48
+162
+163        <activity
+163-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+164            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+164-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+165            android:exported="false"
+165-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+166            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+166-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+167
+168        <meta-data
+168-->[com.google.android.gms:play-services-basement:18.2.0] C:\Users\nour6\.gradle\caches\transforms-3\a4bbafb918d885afcf112a8c21b52a56\transformed\jetified-play-services-basement-18.2.0\AndroidManifest.xml:21:9-23:69
+169            android:name="com.google.android.gms.version"
+169-->[com.google.android.gms:play-services-basement:18.2.0] C:\Users\nour6\.gradle\caches\transforms-3\a4bbafb918d885afcf112a8c21b52a56\transformed\jetified-play-services-basement-18.2.0\AndroidManifest.xml:22:13-58
+170            android:value="@integer/google_play_services_version" />
+170-->[com.google.android.gms:play-services-basement:18.2.0] C:\Users\nour6\.gradle\caches\transforms-3\a4bbafb918d885afcf112a8c21b52a56\transformed\jetified-play-services-basement-18.2.0\AndroidManifest.xml:23:13-66
+171    </application>
+172
+173</manifest>

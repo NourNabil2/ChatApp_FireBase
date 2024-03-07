@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../../Core/Network/API.dart';
 import '../../../Core/Utils/constants.dart';
 import '../../../Core/Functions/show_snack_bar.dart';
 import '../../Chat_Screen/View/chat_page.dart';
@@ -25,17 +26,25 @@ class LoginPage extends StatelessWidget {
     String? email, password;
     SignCubit Cubit  = BlocProvider.of<SignCubit>(context)  ;
     return BlocConsumer<SignCubit, SignState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginLoading)
          {
            isLoading = true;
          }
-         else if (state is LoginSuccess)
-           {
-             Navigator.pushNamed(context, HomeScreen.id);
-           }
+         else if (state is LoginSuccess) {
+          isLoading = false;
+          if ((await APIs.userExists())) {
+            Navigator.pushNamedAndRemoveUntil(context, HomeScreen.id,(route) => false,);
+          }
+          else {
+            await APIs.createUser().then((value) {
+              Navigator.pushNamed(context, HomeScreen.id);
+            });
+          }
+        }
          else if (state is LoginErorr)
            {
+             isLoading = false;
              showSnackBar(context, state.messageErorr!);
            }
       },
@@ -110,9 +119,20 @@ class LoginPage extends StatelessWidget {
                       if (formKey.currentState!.validate()) {
                         Cubit.loginUser(email: email!, password: password!);
 
-                      } else {}
+                      } else {
+                      }
                     },
                     text: 'LOGIN',
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  CustomButon(
+                    onTap: ()  {
+
+                      Cubit.handleGoogleBtnClick();
+                      },
+                    text: 'LOGIN with google',
                   ),
                   SizedBox(
                     height: 10,

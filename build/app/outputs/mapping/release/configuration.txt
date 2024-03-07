@@ -131,6 +131,8 @@
 -keep class android.app.Application { <init>(); }
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
 -keep class com.example.chats.MainActivity { <init>(); }
+-keep class com.google.android.gms.auth.api.signin.RevocationBoundService { <init>(); }
+-keep class com.google.android.gms.auth.api.signin.internal.SignInHubActivity { <init>(); }
 -keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
 -keep class com.google.firebase.auth.internal.GenericIdpActivity { <init>(); }
 -keep class com.google.firebase.auth.internal.RecaptchaActivity { <init>(); }
@@ -322,6 +324,21 @@
 # An annotation used for build tooling, won't be directly accessed.
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 # End of content from C:\Users\nour6\.gradle\caches\transforms-3\e8b6bfdbf7c50375f3380d8ea75adc56\transformed\rules\lib\META-INF\com.android.tools\r8\coroutines.pro
+# The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\ae8e536f246c00edb3d2f9cf5fb79f47\transformed\jetified-play-services-auth-base-18.0.4\proguard.txt
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.auth.zzeu {
+  <fields>;
+}
+
+# End of content from C:\Users\nour6\.gradle\caches\transforms-3\ae8e536f246c00edb3d2f9cf5fb79f47\transformed\jetified-play-services-auth-base-18.0.4\proguard.txt
+# The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\87efe162e9bc44d3700a980622b1d9d4\transformed\jetified-play-services-fido-20.0.1\proguard.txt
+# Methods enable and disable in this class are complained as unresolved
+# references, but they are system APIs and are not used by Fido client apps.
+-dontwarn android.nfc.NfcAdapter
+
+# End of content from C:\Users\nour6\.gradle\caches\transforms-3\87efe162e9bc44d3700a980622b1d9d4\transformed\jetified-play-services-fido-20.0.1\proguard.txt
 # The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\3aa83f8337416042d21370d93f3ec5ef\transformed\jetified-play-services-base-18.0.1\proguard.txt
 # b/35135904 Ensure that proguard will not strip the mResultGuardian.
 -keepclassmembers class com.google.android.gms.common.api.internal.BasePendingResult {
@@ -335,7 +352,7 @@
 
 
 # End of content from C:\Users\nour6\.gradle\caches\transforms-3\3b60e133432f1f730b3e44bb313734ab\transformed\jetified-play-services-tasks-18.0.2\proguard.txt
-# The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\94c054f5931c837e5360b35357b32d11\transformed\jetified-play-services-basement-18.1.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\a4bbafb918d885afcf112a8c21b52a56\transformed\jetified-play-services-basement-18.2.0\proguard.txt
 # Needed when building against pre-Marshmallow SDK.
 -dontwarn android.security.NetworkSecurityPolicy
 
@@ -346,8 +363,9 @@
 -dontwarn sun.misc.Unsafe
 -dontwarn libcore.io.Memory
 
-# Internal Google annotations for generating Proguard keep rules.
+# Annotations used during internal SDK shrinking.
 -dontwarn com.google.android.apps.common.proguard.UsedBy*
+-dontwarn com.google.android.apps.common.proguard.SideEffectFree
 
 # Annotations referenced by the SDK but whose definitions are contained in
 # non-required dependencies.
@@ -408,7 +426,7 @@
 
 
 
-# End of content from C:\Users\nour6\.gradle\caches\transforms-3\94c054f5931c837e5360b35357b32d11\transformed\jetified-play-services-basement-18.1.0\proguard.txt
+# End of content from C:\Users\nour6\.gradle\caches\transforms-3\a4bbafb918d885afcf112a8c21b52a56\transformed\jetified-play-services-basement-18.2.0\proguard.txt
 # The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\bbbbd632898af927049fa4f571ee9e7e\transformed\core-1.6.0\proguard.txt
 # Never inline methods, but allow shrinking and obfuscation.
 -keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.view.ViewCompat$Api* {
@@ -491,6 +509,15 @@
 }
 
 # End of content from C:\Users\nour6\.gradle\caches\transforms-3\cc149ec643fd78a4cbe257f85c0b7001\transformed\lifecycle-viewmodel-2.1.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\be2404dfdb4e3992410839270f4abf27\transformed\jetified-grpc-android-1.57.2\proguard.txt
+-keepclassmembers class io.grpc.okhttp.OkHttpChannelBuilder {
+  io.grpc.okhttp.OkHttpChannelBuilder forTarget(java.lang.String);
+  io.grpc.okhttp.OkHttpChannelBuilder scheduledExecutorService(java.util.concurrent.ScheduledExecutorService);
+  io.grpc.okhttp.OkHttpChannelBuilder sslSocketFactory(javax.net.ssl.SSLSocketFactory);
+  io.grpc.okhttp.OkHttpChannelBuilder transportExecutor(java.util.concurrent.Executor);
+}
+
+# End of content from C:\Users\nour6\.gradle\caches\transforms-3\be2404dfdb4e3992410839270f4abf27\transformed\jetified-grpc-android-1.57.2\proguard.txt
 # The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\6b8963e8796825e562751ac98416a781\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
 -keep,allowobfuscation @interface androidx.annotation.Keep
 -keep @androidx.annotation.Keep class * {*;}
@@ -512,15 +539,6 @@
 }
 
 # End of content from C:\Users\nour6\.gradle\caches\transforms-3\6b8963e8796825e562751ac98416a781\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
-# The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\be2404dfdb4e3992410839270f4abf27\transformed\jetified-grpc-android-1.57.2\proguard.txt
--keepclassmembers class io.grpc.okhttp.OkHttpChannelBuilder {
-  io.grpc.okhttp.OkHttpChannelBuilder forTarget(java.lang.String);
-  io.grpc.okhttp.OkHttpChannelBuilder scheduledExecutorService(java.util.concurrent.ScheduledExecutorService);
-  io.grpc.okhttp.OkHttpChannelBuilder sslSocketFactory(javax.net.ssl.SSLSocketFactory);
-  io.grpc.okhttp.OkHttpChannelBuilder transportExecutor(java.util.concurrent.Executor);
-}
-
-# End of content from C:\Users\nour6\.gradle\caches\transforms-3\be2404dfdb4e3992410839270f4abf27\transformed\jetified-grpc-android-1.57.2\proguard.txt
 # The proguard configuration file for the following section is C:\Users\nour6\.gradle\caches\transforms-3\c01628a75f32a72c9ff99e1bd717cb05\transformed\jetified-protolite-well-known-types-18.0.0\proguard.txt
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the

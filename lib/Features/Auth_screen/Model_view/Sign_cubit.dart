@@ -1,9 +1,12 @@
 
-
-
+import 'dart:developer';
+import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
+
+import '../../../Core/Network/API.dart';
 part 'Sign_state.dart';
 
 class SignCubit extends Cubit<SignState> {
@@ -12,18 +15,18 @@ class SignCubit extends Cubit<SignState> {
   Future<void> loginUser({required String email ,required String password}) async {
       emit(LoginLoading());
     try{
-      UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential user = await APIs.auth.signInWithEmailAndPassword(email: email, password: password);
       emit(LoginSuccess());
 
 
     } on FirebaseAuthException catch (ex) {
       if (ex.code == 'user-not-found') {
-        emit(LoginErorr(messageErorr: 'user-not-found'));
+        emit(LoginErorr( 'user-not-found'));
       } else if (ex.code == 'wrong-password') {
-        emit(LoginErorr(messageErorr: 'wrong-password'));
+        emit(LoginErorr( 'wrong-password'));
       }
     } catch (e) {
-      emit(LoginErorr(messageErorr: 'there was an error'));
+      emit(LoginErorr( 'there was an error'));
     }
 
   }
@@ -48,6 +51,53 @@ class SignCubit extends Cubit<SignState> {
     }
 
 
+  }
+
+  Future<UserCredential?> _signInWithGoogle() async {
+    try {
+
+      await InternetAddress.lookup('google.com');
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+       return await APIs.auth.signInWithCredential(credential);
+    } catch (e) {
+      log('\n_signInWithGoogle: $e');
+      emit(LoginErorr('Failed login with Google, try again'));
+
+    }
+  }
+
+  handleGoogleBtnClick() {
+
+    _signInWithGoogle().then((user) async {
+      if (user != null) {
+        log('\nUser: ${user.user}');
+        log('\nUserAdditionalInfo: ${user.additionalUserInfo}');
+
+        emit(LoginSuccess());
+      }
+        // if ((await APIs.userExists())) {
+        //   Navigator.pushReplacement(
+        //       context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+        // } else {
+        //   await APIs.createUser().then((value) {
+        //     Navigator.pushReplacement(
+        //         context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+        //   }
+
+    });
   }
 
 }

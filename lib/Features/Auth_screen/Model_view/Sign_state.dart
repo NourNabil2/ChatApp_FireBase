@@ -7,13 +7,15 @@ class SignInitial extends SignState {}
 
 class LoginSuccess extends SignState {}
 class LoginLoading extends SignState {}
+
 class LoginErorr extends SignState {
-  String? messageErorr;
-  LoginErorr({required messageErorr});
+ final String? messageErorr;
+  LoginErorr(this.messageErorr);
 }
 
 class RegisterSuccess extends SignState {}
 class RegisterLoading extends SignState {}
+//ignore: must_be_immutable
 class RegisterErorr extends SignState {
   String? messageErorr;
   RegisterErorr({required messageErorr});

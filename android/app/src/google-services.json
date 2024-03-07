@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "737029007501",
+    "project_id": "flash-chat-8399d",
+    "storage_bucket": "flash-chat-8399d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737029007501:android:bd33786681b24964459ac4",
+        "android_client_info": {
+          "package_name": "com.example.chato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737029007501-06d9070cidi86k15tep9q1tc4fue514g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chato",
+            "certificate_hash": "8cb5cc063539de325fea133a6abf35f43488c331"
+          }
+        },
+        {
+          "client_id": "737029007501-spob7peogrrodo7u44a6olp6vefj6f3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOoHV05iB4yt5Hbn2TVMiqoJR9KbmlmBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737029007501-9ob5lgriqvtp2rehg2k52e1vai6ect7f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "737029007501-8mdhb09s9ts2nvpb24hom44f3st88ojv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatFirebase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
