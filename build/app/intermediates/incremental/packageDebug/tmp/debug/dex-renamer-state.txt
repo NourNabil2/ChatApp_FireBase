@@ -1,4 +1,4 @@
-#Thu Mar 07 23:53:50 EET 2024
+#Fri Mar 08 05:52:27 EET 2024
 base.2=E\:\\chats\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
 base.1=E\:\\chats\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex

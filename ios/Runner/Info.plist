@@ -57,6 +57,10 @@
 			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
 			<string>com.googleusercontent.apps.861823949799-vc35cprkp249096uujjn0vvnmcvjppkn</string>
 		</array>
+		<key>NSPhotoLibraryUsageDescription</key>
+        	<string>App requires access to the photo library for picking pictures.</string>
+        	<key>NSCameraUsageDescription</key>
+        	<string>App requires access to the camera for taking pictures.</string>
 	</dict>
 </array>
 <!-- End of the Google Sign-in Section -->

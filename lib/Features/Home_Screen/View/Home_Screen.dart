@@ -22,42 +22,83 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<ChatUser> searchList = [];  // TODO
+  List<ChatUser> UserList = [];
+
+  bool _isSearching = false;
+
   @override
   void initState() {
     super.initState();
     APIs.getSelfInfo();
   }
+
   @override
   Widget build(BuildContext context) {
-    List<ChatUser> UserList = [];
+
+
+
     // HomeCubit Cubit = BlocProvider.of<HomeCubit>(context);
-    return Scaffold(
+    return GestureDetector(
+      //for hiding keyboard when a tap is detected on screen
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: WillPopScope(
+          //if search is on & back button is pressed then close search
+          //or else simple close current screen on back button click
+
+            onWillPop: () {
+              if (_isSearching) {
+                setState(() {
+                  _isSearching = !_isSearching;
+                });
+              return  Future.value(false);
+              } else {
+                return Future.value(true);
+              }
+            },
+    child:  Scaffold(
         appBar: AppBar(
           actions: [
-
             IconButton(onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(user: APIs.me),));
+
             },
                 icon: Icon(Icons.person, color: Colors.black,)),
-
-
-            IconButton(onPressed: () {},
-                icon: Icon(Icons.search_rounded, color: Colors.black,)),
-
-
           ],
+
+          leading: IconButton(onPressed: () {
+            setState(() {
+              _isSearching = !_isSearching;
+            });
+
+          }, icon: Icon( _isSearching? CupertinoIcons.clear_circled_solid : Icons.search_rounded  , color: Colors.black,)),
           automaticallyImplyLeading: false,
           backgroundColor: kPrimaryColor,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                kLogo,
-                height: 50,
-              ),
-              Text('Home'),
-            ],
-          ),
+          title:_isSearching
+              ? TextField(
+            decoration: const InputDecoration(
+                border: InputBorder.none, hintText: 'Name, Email, ...'),
+            autofocus: true,
+            style: const TextStyle(fontSize: 17, letterSpacing: 0.5),
+            //when search text changes then updated search list
+            onChanged: (val) {
+              //search logic
+               searchList.clear();
+                for (var i in UserList) {
+                  if (i.name.toLowerCase().contains(val.toLowerCase()) ||
+                      i.email.toLowerCase().contains(val.toLowerCase())) {
+                    searchList.add(i);
+                    log("Data2: ${jsonEncode(i)}");
+                 setState(() {
+                   searchList;
+                 });
+                  }
+                }
+
+
+            },
+          ) // todo :: make widget
+              : const Text('We Chat'),
           centerTitle: true,
         ),
 
@@ -92,20 +133,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             final data = snapshot.data?.docs;
                             for (var i in data!) {
-                              UserList = data.map((e) => ChatUser.fromJson(e.data())).toList() ?? [] ;
+                                 UserList = data.map((e) => ChatUser.fromJson(e.data())).toList() ?? [] ;
+
                               log("Data1: ${jsonEncode(i.data())}");
                             }
                             if (UserList.isNotEmpty)
                             {
                               return ListView.builder(
-                                  itemCount: UserList.length,
-                                  itemBuilder: (context, index) => ChatUserCardState(user: UserList[index]) );
+                                  itemCount: _isSearching
+                                      ? searchList.length
+                                      : UserList.length,
+                                  itemBuilder: (context, index) => ChatUserCardState(user: _isSearching
+                                      ? searchList[index]
+                                      : UserList[index]) );
                             }
                             else
                             {
                               return const Text('No connection Found'); // ToDO:: Handel this
                             }
-                        }});}}));}}
+                        }});}}))));}}
 
 
 

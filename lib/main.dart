@@ -3,6 +3,7 @@ import 'package:chats/Features/Chat_Screen/View/chat_page.dart';
 import 'package:chats/Features/Home_Screen/View/Home_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Features/Auth_screen/View/login_page.dart';
 import 'Features/Auth_screen/View/resgister_page.dart';
@@ -18,7 +19,17 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+
+  //for setting orientation to portrait only
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((value) {
+
+    runApp(const MyApp());
+  });
+
+
+
+
 }
 
 class MyApp extends StatelessWidget {
@@ -34,6 +45,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ChatCubit()),
         //BlocProvider(create: (context) => HomeCubit()),
       ],
+
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
