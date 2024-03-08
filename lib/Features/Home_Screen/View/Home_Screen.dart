@@ -26,84 +26,86 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     APIs.getSelfInfo();
-    }
+  }
   @override
   Widget build(BuildContext context) {
     List<ChatUser> UserList = [];
-   // HomeCubit Cubit = BlocProvider.of<HomeCubit>(context);
+    // HomeCubit Cubit = BlocProvider.of<HomeCubit>(context);
     return Scaffold(
-      appBar: AppBar(
-        actions: [
+        appBar: AppBar(
+          actions: [
 
-          IconButton(onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(user: APIs.me),));
-          },
-              icon: Icon(Icons.person, color: Colors.black,)),
-
-
-          IconButton(onPressed: () {},
-              icon: Icon(Icons.search_rounded, color: Colors.black,)),
+            IconButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(user: APIs.me),));
+            },
+                icon: Icon(Icons.person, color: Colors.black,)),
 
 
-        ],
-        automaticallyImplyLeading: false,
-        backgroundColor: kPrimaryColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              kLogo,
-              height: 50,
-            ),
-            Text('Home'),
+            IconButton(onPressed: () {},
+                icon: Icon(Icons.search_rounded, color: Colors.black,)),
+
+
           ],
+          automaticallyImplyLeading: false,
+          backgroundColor: kPrimaryColor,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                kLogo,
+                height: 50,
+              ),
+              Text('Home'),
+            ],
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
 
 
-      body: StreamBuilder(
-        stream: APIs.getMyUsersId(),
+        body: StreamBuilder(
+            stream: APIs.getMyUsersId(),
 
-    //get id of only known users
-    builder: (context, snapshot) {
-    switch (snapshot.connectionState) {
-    //if data is loading
-    case ConnectionState.waiting:
-    case ConnectionState.none:
-    return const Center(child: CircularProgressIndicator());
+            //get id of only known users
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+              //if data is loading
+                case ConnectionState.waiting:
+                case ConnectionState.none:
+                  return const Center(child: CircularProgressIndicator());
 
-    //if some or all data is loaded then show it
-    case ConnectionState.active:
-    case ConnectionState.done:
-      return StreamBuilder(
-    stream: APIs.getAllUsers(snapshot.data?.docs.map((e) => e.id).toList() ?? []),
-    builder: (context, snapshot) {
-    switch (snapshot.connectionState) {
-    //if data is loading
-    case ConnectionState.waiting:
-    case ConnectionState.none:
-    return const Center(child: CircularProgressIndicator());
+              //if some or all data is loaded then show it
+                case ConnectionState.active:
+                case ConnectionState.done:
+                  return StreamBuilder(
+                      stream: APIs.firestore.collection('Users').where('id', isNotEqualTo: APIs.user.uid).snapshots(),
+                      builder: (context, snapshot) {
+                        switch (snapshot.connectionState) {
+                        //if data is loading
+                          case ConnectionState.waiting:
+                            return const Center(child: CircularProgressIndicator());
+                          case ConnectionState.none:
+                            return const Center(child: Text('No Network'));
 
-    //if some or all data is loaded then show it
-    case ConnectionState.active:
-    case ConnectionState.done:
-    final data = snapshot.data?.docs;
-    for (var i in data!) {
-    UserList = data.map((e) => ChatUser.fromJson(e.data())).toList() ?? [] ;
-    log("Data1: ${jsonEncode(i.data())}");
-    }
-    if (UserList.isNotEmpty)
-    {
-    return ListView.builder(
-    itemCount: UserList.length,
-    itemBuilder: (context, index) => ChatUserCardState(user: UserList[index]) );
-    }
-    else
-    {
-    return const Text('No connection Found'); // ToDO:: Handel this
-    }
-    }});}}));}}
+                        //if some or all data is loaded then show it
+                          case ConnectionState.active:
+                          case ConnectionState.done:
+
+                            final data = snapshot.data?.docs;
+                            for (var i in data!) {
+                              UserList = data.map((e) => ChatUser.fromJson(e.data())).toList() ?? [] ;
+                              log("Data1: ${jsonEncode(i.data())}");
+                            }
+                            if (UserList.isNotEmpty)
+                            {
+                              return ListView.builder(
+                                  itemCount: UserList.length,
+                                  itemBuilder: (context, index) => ChatUserCardState(user: UserList[index]) );
+                            }
+                            else
+                            {
+                              return const Text('No connection Found'); // ToDO:: Handel this
+                            }
+                        }});}}));}}
 
 
 

@@ -149,7 +149,7 @@ class APIs {
   //
   // for getting current user info
   static Future<void> getSelfInfo() async {
-    await firestore.collection('users').doc(user.uid).get().then((user) async {
+    await firestore.collection(kUsersCollections).doc(user.uid).get().then((user) async {
       if (user.exists) {
         me = ChatUser.fromJson(user.data()!);
        // await getFirebaseMessagingToken();
@@ -168,7 +168,7 @@ class APIs {
   // for getting id's of known users from firestore database
   static Stream<QuerySnapshot<Map<String, dynamic>>> getMyUsersId() {
     return firestore
-        .collection('users')
+        .collection(kUsersCollections)
         .doc(user.uid)
         .collection('my_users')
         .snapshots();
@@ -179,7 +179,7 @@ class APIs {
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers(
        List<String> userIds) {
     return firestore
-        .collection('users')
+        .collection(kUsersCollections)
         .where('id',
         whereIn: userIds.isEmpty
             ? ['']
@@ -201,7 +201,7 @@ class APIs {
   //
   // for updating user information
   static Future<void> updateUserInfo() async {
-    await firestore.collection('users').doc(user.uid).update({
+    await firestore.collection(kUsersCollections).doc(user.uid).update({
       'name': me.name,
       'about': me.about,
     });

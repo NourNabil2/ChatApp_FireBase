@@ -186,11 +186,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      Dialogs.showSnackbar(
-                          context, 'Profile Updated Successfully!'); // todo
+
                       APIs.updateUserInfo().then((value) {
                         Dialogs.showSnackbar(
-                            context, 'Profile Updated Successfully!');
+                            context, 'Profile Updated Successfully!'); //todo
                       });
                     }
                   },
