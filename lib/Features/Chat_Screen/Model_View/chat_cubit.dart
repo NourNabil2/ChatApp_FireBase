@@ -9,9 +9,15 @@ part 'chat_state.dart';
 
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitial());
+  bool showEmoji = false;
   List<Message> messagesList = [];
   CollectionReference messages =
       APIs.firestore.collection(kMessagesCollections);
+
+  void show_Emoji()
+  {
+    showEmoji = !showEmoji;
+  }
 
   void sendmessage({
     required String message,
@@ -21,13 +27,13 @@ class ChatCubit extends Cubit<ChatState> {
     } on Exception catch (e) {}
   }
 
-  void getmessage() {
-    messages.orderBy(kCreatedAt, descending: true).snapshots().listen((event) {
-      messagesList.clear();
-      for (var doc in event.docs) {
-        messagesList.add(Message.fromJson(doc));
-      }
-      emit(ChatSuccess());
-    });
-  }
+  // void getmessage() {
+  //   messages.orderBy(kCreatedAt, descending: true).snapshots().listen((event) {
+  //     messagesList.clear();
+  //     for (var doc in event.docs) {
+  //       messagesList.add(Message.fromJson(doc));
+  //     }
+  //     emit(ChatSuccess());
+  //   });
+  // }
 }

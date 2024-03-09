@@ -52,7 +52,6 @@ class MyApp extends StatelessWidget {
           HomeScreen.id: (context) => HomeScreen(),
           LoginPage.id: (context) => LoginPage(),
           RegisterPage.id: (context) => RegisterPage(),
-          ChatPage.id: (context) => ChatPage()
         },
         initialRoute: LoginPage.id,
       ),

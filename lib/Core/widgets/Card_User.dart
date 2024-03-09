@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../Features/Chat_Screen/View/chat_page.dart';
 import '../../Features/Home_Screen/Data/Users.dart';
 
 
@@ -29,7 +30,12 @@ class _ChatUserCardStateState extends State<ChatUserCardState> {
       elevation: 0.5,// TODO ::
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => ChatPage(user: widget.user)));
+        },
     child: ListTile(
 //user profile picture
     leading: Stack(
