@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "io.flutter.plugins.firebase.storage.firebase_storage-merged_res-14:/layout/notification_action_tombstone.xml",
+        "source": "io.flutter.plugins.firebase.storage.firebase_storage-core-1.6.0-4:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "io.flutter.plugins.firebase.storage.firebase_storage-merged_res-14:/layout/notification_template_part_chronometer.xml",
+        "source": "io.flutter.plugins.firebase.storage.firebase_storage-core-1.6.0-4:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "io.flutter.plugins.firebase.storage.firebase_storage-merged_res-14:/layout/custom_dialog.xml",
+        "source": "io.flutter.plugins.firebase.storage.firebase_storage-core-1.6.0-4:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "io.flutter.plugins.firebase.storage.firebase_storage-merged_res-14:/layout/notification_action.xml",
+        "source": "io.flutter.plugins.firebase.storage.firebase_storage-core-1.6.0-4:/layout/notification_action.xml"
+    },
+    {
+        "merged": "io.flutter.plugins.firebase.storage.firebase_storage-merged_res-14:/layout/notification_template_part_time.xml",
+        "source": "io.flutter.plugins.firebase.storage.firebase_storage-core-1.6.0-4:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "io.flutter.plugins.firebase.storage.firebase_storage-merged_res-14:/layout/notification_template_icon_group.xml",
+        "source": "io.flutter.plugins.firebase.storage.firebase_storage-core-1.6.0-4:/layout/notification_template_icon_group.xml"
+    }
+]
