@@ -20,10 +20,6 @@
         "source": "com.example.chats.app-main-23:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.chats.app-merged_res-29:/drawable_launch_background.xml.flat",
-        "source": "com.example.chats.app-main-23:/drawable/launch_background.xml"
-    },
-    {
         "merged": "com.example.chats.app-merged_res-29:/drawable-v21_launch_background.xml.flat",
         "source": "com.example.chats.app-main-23:/drawable-v21/launch_background.xml"
     }
