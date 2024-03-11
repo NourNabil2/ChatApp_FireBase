@@ -1,9 +1,11 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chats/Core/widgets/chat_buble.dart';
 import 'package:chats/Features/Chat_Screen/Model_View/chat_cubit.dart';
 import 'package:chats/Features/Home_Screen/Data/Users.dart';
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,18 +17,32 @@ import '../Data/message.dart';
 
 
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   static String id = 'ChatPage';
-  final _controller = ScrollController();
   final ChatUser user;
-  TextEditingController controller = TextEditingController();
-  List<Message> list = [];
+
   ChatPage({Key? key, required this.user}) : super(key: key);
 
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  final _controller = ScrollController();
+
+  bool showEmoji = false;
+
+  List<Message> messagesList = [];
+
+  TextEditingController controller = TextEditingController();
+
+
+
   bool _isUploading = false;
+
   @override
   Widget build(BuildContext context) {
-    ChatCubit Cubit = BlocProvider.of<ChatCubit>(context);
+   // ChatCubit Cubit = BlocProvider.of<ChatCubit>(context);
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
     child: SafeArea(
@@ -34,8 +50,8 @@ class ChatPage extends StatelessWidget {
     //if emojis are shown & back button is pressed then hide emojis
     //or else simple close current screen on back button click
     onWillPop: () {
-    if (Cubit.showEmoji) {
-      Cubit.show_Emoji();
+    if (showEmoji) {
+      showEmoji = !showEmoji;
     return Future.value(false);
     } else {
     return Future.value(true);
@@ -50,24 +66,57 @@ class ChatPage extends StatelessWidget {
         body: Column(
           children: [
             Expanded(
-              child: BlocConsumer<ChatCubit, ChatState>(
-                listener: (context, state) {
+              child:StreamBuilder(
+        stream: APIs.getAllMessages(widget.user),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+          //if data is loading
+            case ConnectionState.waiting:
+            case ConnectionState.none:
+              return const SizedBox();
 
-                },
-                builder: (context, state) {
-                  return ListView.builder(
-                      reverse: true,
-                      controller: _controller,
-                      itemCount: Cubit.messagesList.length,
-                      itemBuilder: (context, index) {
-                        return Cubit.messagesList[index].toId == user.email ? MessageCard(
-                          message: Cubit.messagesList[index],
-                        ) : MessageCard(message: Cubit.messagesList[index]);
-                      });
-                },
-              ),
-            ),
+          //if some or all data is loaded then show it
+            case ConnectionState.active:
+            case ConnectionState.done:
+              final data = snapshot.data?.docs;
+              messagesList = data
+                  ?.map((e) => Message.fromJson(e.data()))
+                  .toList() ??
+                  [];
+
+              if (messagesList.isNotEmpty) {
+                return ListView.builder(
+                    reverse: true,
+                    itemCount: messagesList.length,
+                    padding: EdgeInsets.only(top: 10),
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return MessageCard(message: messagesList[index]);
+                    });
+              } else {
+                return const Center(
+                  child: Text('Say Hii! 👋',
+                      style: TextStyle(fontSize: 20)),
+                );
+              }
+          }
+        },
+      ),
+    ),
+
+
             chatInput(context),
+            if (showEmoji)
+              SizedBox(
+                height: 10,
+                child: EmojiPicker(
+                  textEditingController: controller,
+                  config: Config(
+                  emojiViewConfig: EmojiViewConfig(columns: 8,emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0) ),
+
+                  ),
+                ),
+              )
           ],
         ),
       ),
@@ -75,16 +124,17 @@ class ChatPage extends StatelessWidget {
 
 
   }
+
   Widget appBar(context) {
     return InkWell(
         onTap: () {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (_) => Porfile_Other_Users(user: user)));
+                  builder: (_) => Porfile_Other_Users(user: widget.user)));
         },
         child: StreamBuilder(
-            stream: APIs.getUserInfo(user),
+            stream: APIs.getUserInfo(widget.user),
             builder: (context, snapshot) {
               final data = snapshot.data?.docs;
               final list =
@@ -105,7 +155,7 @@ class ChatPage extends StatelessWidget {
                       width: 40,
                       height:40, //todo
                       imageUrl:
-                      list.isNotEmpty ? list[0].image : user.image,
+                      list.isNotEmpty ? list[0].image : widget.user.image,
                       errorWidget: (context, url, error) => const CircleAvatar(
                           child: Icon(CupertinoIcons.person)),
                     ),
@@ -120,7 +170,7 @@ class ChatPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //user name
-                      Text(list.isNotEmpty ? list[0].name : user.name,
+                      Text(list.isNotEmpty ? list[0].name : widget.user.name,
                           style: const TextStyle(
                               fontSize: 16,
                               color: Colors.black87,
@@ -148,6 +198,7 @@ class ChatPage extends StatelessWidget {
               );
             }));
   }
+
   Widget chatInput(context) {
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -164,8 +215,8 @@ class ChatPage extends StatelessWidget {
                   //emoji button
                   IconButton(
                       onPressed: () {
-                        // FocusScope.of(context).unfocus();
-                        // setState(() => _showEmoji = !_showEmoji);
+                         FocusScope.of(context).unfocus();
+                         setState(() => showEmoji = !showEmoji);
                       },
                       icon: const Icon(Icons.emoji_emotions,
                           color: Colors.blueAccent, size: 25)),
@@ -235,7 +286,9 @@ class ChatPage extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               if (controller.text.isNotEmpty) {
-                if (list.isEmpty) {
+                APIs.sendMessage(
+                    widget.user, controller.text, Type.text);
+                if (messagesList.isEmpty) {
                   // //on first message (add user to my_user collection of chat user)
                   // APIs.sendFirstMessage(
                   //     widget.user, _textController.text, Type.text);
@@ -262,4 +315,19 @@ class ChatPage extends StatelessWidget {
 
 
 
-
+// BlocConsumer<ChatCubit, ChatState>(
+// listener: (context, state) {
+//
+// },
+// builder: (context, state) {
+// return ListView.builder(
+// reverse: true, // todo
+// controller: _controller,
+// itemCount: messagesList.length,
+// itemBuilder: (context, index) {
+// return messagesList[index].toId == widget.user.email ? MessageCard(
+// message: messagesList[index],
+// ) : MessageCard(message: messagesList[index]);
+// });
+// },
+// ),
