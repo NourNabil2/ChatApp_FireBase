@@ -1,23 +1,23 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.chats.app-mergeReleaseResources-14:/values-sw/values-sw.xml",
+            "outputFile": "com.example.chats.app-mergeReleaseResources-27:/values-sw/values-sw.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\bbbbd632898af927049fa4f571ee9e7e\\transformed\\core-1.6.0\\res\\values-sw\\values-sw.xml",
+                    "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\b6067ea04b980d60b46d271eb9438da2\\transformed\\core-1.10.1\\res\\values-sw\\values-sw.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,449,556,663,778",
+                        "endColumns": "93,101,96,100,106,106,114,100",
+                        "endOffsets": "144,246,343,444,551,658,773,874"
                     },
                     "to": {
-                        "startLines": "24",
-                        "startColumns": "4",
-                        "startOffsets": "2751",
-                        "endColumns": "100",
-                        "endOffsets": "2847"
+                        "startLines": "2,3,4,5,6,7,8,31",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,449,556,663,3474",
+                        "endColumns": "93,101,96,100,106,106,114,100",
+                        "endOffsets": "144,246,343,444,551,658,773,3570"
                     }
                 },
                 {
@@ -30,11 +30,11 @@
                         "endOffsets": "292,444,565,670,829,950,1065,1175,1336,1438,1588,1711,1857,2012,2076,2147,2239"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19",
+                        "startLines": "9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,159,315,440,549,712,837,956,1216,1381,1487,1641,1768,1918,2077,2145,2220",
+                        "startOffsets": "778,882,1038,1163,1272,1435,1560,1679,1939,2104,2210,2364,2491,2641,2800,2868,2943",
                         "endColumns": "103,155,124,108,162,124,118,113,164,105,153,126,149,158,67,74,95",
-                        "endOffsets": "154,310,435,544,707,832,951,1065,1376,1482,1636,1763,1913,2072,2140,2215,2311"
+                        "endOffsets": "877,1033,1158,1267,1430,1555,1674,1788,2099,2205,2359,2486,2636,2795,2863,2938,3034"
                     }
                 },
                 {
@@ -47,11 +47,11 @@
                         "endOffsets": "336"
                     },
                     "to": {
-                        "startLines": "10",
+                        "startLines": "17",
                         "startColumns": "4",
-                        "startOffsets": "1070",
+                        "startOffsets": "1793",
                         "endColumns": "145",
-                        "endOffsets": "1211"
+                        "endOffsets": "1934"
                     }
                 },
                 {
@@ -64,11 +64,11 @@
                         "endOffsets": "164,265,382,485"
                     },
                     "to": {
-                        "startLines": "20,21,22,23",
+                        "startLines": "27,28,29,30",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "2316,2430,2531,2648",
+                        "startOffsets": "3039,3153,3254,3371",
                         "endColumns": "113,100,116,102",
-                        "endOffsets": "2425,2526,2643,2746"
+                        "endOffsets": "3148,3249,3366,3469"
                     }
                 }
             ]

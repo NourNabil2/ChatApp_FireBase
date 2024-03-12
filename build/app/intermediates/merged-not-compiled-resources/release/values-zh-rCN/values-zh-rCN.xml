@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"接听"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"视频通话"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"拒接"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"挂断"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"来电"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"正在通话"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"正在过滤来电"</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">启用</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text">您必须先启用 Google Play 服务，然后才能运行%1$s。</string>
     <string msgid="5122002158466380389" name="common_google_play_services_enable_title">启用 Google Play 服务</string>
