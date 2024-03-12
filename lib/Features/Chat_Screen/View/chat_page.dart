@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../Core/Functions/Time_Format.dart';
 import '../../../Core/Network/API.dart';
 import '../../../Core/Utils/constants.dart';
 import '../../Profile_Screen/View/Profile_OtherUsers_Screen.dart';
@@ -104,15 +105,22 @@ class _ChatPageState extends State<ChatPage> {
       ),
     ),
 
-
+            //progress indicator for showing uploading
+            if (_isUploading)
+              const Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                      padding:
+                      EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                      child: CircularProgressIndicator(strokeWidth: 2))),
             chatInput(context),
             if (showEmoji)
               SizedBox(
-                height: 10,
+                height: 300,
                 child: EmojiPicker(
                   textEditingController: controller,
                   config: Config(
-                  emojiViewConfig: EmojiViewConfig(columns: 8,emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0) ),
+                  columns: 8,emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0) ,
 
                   ),
                 ),
@@ -139,7 +147,6 @@ class _ChatPageState extends State<ChatPage> {
               final data = snapshot.data?.docs;
               final list =
                   data?.map((e) => ChatUser.fromJson(e.data())).toList() ?? [];
-
               return Row(
                 children: [
                   //back button
@@ -179,19 +186,19 @@ class _ChatPageState extends State<ChatPage> {
                       //for adding some space
                       const SizedBox(height: 2),
 
-                      //last seen time of user
-                      // Text(
-                      //     list.isNotEmpty
-                      //         ? list[0].isOnline
-                      //         ? 'Online'
-                      //         : MyDateUtil.getLastActiveTime(
-                      //         context: context,
-                      //         lastActive: list[0].lastActive)
-                      //         : MyDateUtil.getLastActiveTime(
-                      //         context: context,
-                      //         lastActive: widget.user.lastActive),
-                      //     style: const TextStyle(
-                      //         fontSize: 13, color: Colors.black54)),
+                     // last seen time of user
+                      Text(
+                          list.isNotEmpty
+                              ? list[0].isOnline
+                              ? 'Online'
+                              : Format_Time.getLastActiveTime(
+                              context: context,
+                              lastActive: list[0].lastActive)
+                              : Format_Time.getLastActiveTime(
+                              context: context,
+                              lastActive: widget.user.lastActive),
+                          style: const TextStyle(
+                              fontSize: 13, color: Colors.black54)),
                     ],
                   )
                 ],
@@ -243,13 +250,12 @@ class _ChatPageState extends State<ChatPage> {
                         // Picking multiple images
                         final List<XFile> images =
                         await picker.pickMultiImage(imageQuality: 70);
-
                         // uploading & sending image one by one
                         for (var i in images) {
                           log('Image Path: ${i.path}');
-                         // setState(() => _isUploading = true);
-                         // await APIs.sendChatImage(widget.user, File(i.path));
-                          //setState(() => _isUploading = false);
+                         setState(() => _isUploading = true);
+                         await APIs.sendChatImage(widget.user, File(i.path));
+                          setState(() => _isUploading = false);
                         }
                       },
                       icon: const Icon(Icons.image,
@@ -265,11 +271,10 @@ class _ChatPageState extends State<ChatPage> {
                             source: ImageSource.camera, imageQuality: 70);
                         if (image != null) {
                           log('Image Path: ${image.path}');
-                         // setState(() => _isUploading = true);
-
-                          // await APIs.sendChatImage(
-                          //     widget.user, File(image.path));
-                          // setState(() => _isUploading = false);
+                         setState(() => _isUploading = true);
+                          await APIs.sendChatImage(
+                              widget.user, File(image.path));
+                          setState(() => _isUploading = false);
                         }
                       },
                       icon: const Icon(Icons.camera_alt_rounded,

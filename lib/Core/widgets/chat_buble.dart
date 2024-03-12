@@ -74,7 +74,7 @@ class _MessageCardState extends State<MessageCard> {
                 errorWidget: (context, url, error) =>
                 const Icon(Icons.image, size: 70),
               ),
-            ),
+            ), //todo :: download image state circle
           ),
         ),
 
