@@ -2,6 +2,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:chats/Core/Functions/CashSaver.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
@@ -18,19 +19,20 @@ class SignCubit extends Cubit<SignState> {
       UserCredential user = await APIs.auth.signInWithEmailAndPassword(email: email, password: password);
       emit(LoginSuccess());
 
-
     } on FirebaseAuthException catch (ex) {
       if (ex.code == 'user-not-found') {
-        emit(LoginErorr( 'user-not-found'));
+        emit(LoginErorr('user-not-found'));
       } else if (ex.code == 'wrong-password') {
-        emit(LoginErorr( 'wrong-password'));
+        emit(LoginErorr('wrong-password'));
+      }
+      else {
+        emit(LoginErorr('Wrong Email or Passwork'));
       }
     } catch (e) {
-      emit(LoginErorr( 'there was an error'));
+      emit(LoginErorr('there was an error'));
     }
 
   }
-
 
   Future<void> registerUser({required String email ,required String password}) async {
     emit(RegisterLoading());
@@ -54,8 +56,8 @@ class SignCubit extends Cubit<SignState> {
   }
 
   Future<UserCredential?> _signInWithGoogle() async {
+    emit(LoginLoading());
     try {
-
       await InternetAddress.lookup('google.com');
       // Trigger the authentication flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -85,7 +87,6 @@ class SignCubit extends Cubit<SignState> {
       if (user != null) {
         log('\nUser: ${user.user}');
         log('\nUserAdditionalInfo: ${user.additionalUserInfo}');
-
         emit(LoginSuccess());
       }
         // if ((await APIs.userExists())) {

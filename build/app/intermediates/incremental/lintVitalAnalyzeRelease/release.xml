@@ -1,7 +1,7 @@
 <variant
     name="release"
     package="com.example.chats"
-    minSdkVersion="19"
+    minSdkVersion="21"
     targetSdkVersion="33"
     shrinking="true"
     mergedManifest="E:\chats\build\app\intermediates\merged_manifest\release\AndroidManifest.xml"

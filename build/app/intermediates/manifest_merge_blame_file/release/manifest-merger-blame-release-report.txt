@@ -5,7 +5,7 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="19"
+8        android:minSdkVersion="21"
 8-->E:\chats\android\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="33" />
 9-->E:\chats\android\app\src\main\AndroidManifest.xml

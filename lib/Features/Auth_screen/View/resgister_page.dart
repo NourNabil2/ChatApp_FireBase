@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../Core/Functions/show_snack_bar.dart';
+import '../../../Core/Utils/Colors.dart';
 import '../../Chat_Screen/View/chat_page.dart';
 import '../../Home_Screen/View/Home_Screen.dart';
 import '../Model_view/Sign_cubit.dart';
@@ -46,7 +47,7 @@ class RegisterPage extends StatelessWidget {
         return ModalProgressHUD(
           inAsyncCall: isLoading,
           child: Scaffold(
-            backgroundColor: kPrimaryColor,
+            backgroundColor: ColorApp.kPrimaryColor,
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Form(

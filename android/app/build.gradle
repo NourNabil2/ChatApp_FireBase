@@ -25,6 +25,11 @@ if (flutterVersionName == null) {
 }
 
 android {
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
     namespace "com.example.chats"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -47,7 +52,7 @@ android {
         applicationId "com.example.chats"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         multiDexEnabled true
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

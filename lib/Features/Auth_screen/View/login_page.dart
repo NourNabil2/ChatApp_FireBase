@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chats/Core/widgets/custom_button.dart';
 import 'package:chats/Core/widgets/custom_text_field.dart';
 import 'package:chats/Features/Auth_screen/View/resgister_page.dart';
@@ -6,9 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../../Core/Functions/CashSaver.dart';
 import '../../../Core/Network/API.dart';
+import '../../../Core/Utils/Colors.dart';
 import '../../../Core/Utils/constants.dart';
 import '../../../Core/Functions/show_snack_bar.dart';
+import '../../../Core/widgets/component.dart';
 import '../../Chat_Screen/View/chat_page.dart';
 import '../../Home_Screen/View/Home_Screen.dart';
 import '../Model_view/Sign_cubit.dart';
@@ -24,85 +29,65 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? email, password;
-    SignCubit Cubit  = BlocProvider.of<SignCubit>(context)  ;
+    SignCubit Cubit = BlocProvider.of<SignCubit>(context);
     return BlocConsumer<SignCubit, SignState>(
       listener: (context, state) async {
-        if (state is LoginLoading)
-         {
-           isLoading = true;
-         }
-         else if (state is LoginSuccess) {
+        if (state is LoginLoading) {
+          isLoading = true;
+        } else if (state is LoginSuccess) {
           isLoading = false;
-          if ((await APIs.userExists())) {
-            Navigator.pushNamedAndRemoveUntil(context, HomeScreen.id,(route) => false,);
-          }
-          else {
+          await CashSaver.SaveData(key: 'Login', value: true).then((value) async {
+
+            if ((await APIs.userExists())) {
+            Navigator.pushNamedAndRemoveUntil(
+            context,
+            HomeScreen.id,
+            (route) => false,
+            );
+            } else {
             await APIs.createUser().then((value) {
-              Navigator.pushNamed(context, HomeScreen.id);
+            Navigator.pushNamed(context, HomeScreen.id);
             });
-          }
+            }
+
+          });
+
+
+        } else if (state is LoginErorr) {
+          isLoading = false;
+          showSnackBar(context, state.messageErorr!);
         }
-         else if (state is LoginErorr)
-           {
-             isLoading = false;
-             showSnackBar(context, state.messageErorr!);
-           }
       },
-      builder:(context, state) => ModalProgressHUD(
+      builder: (context, state) => ModalProgressHUD(
+        progressIndicator: Image.asset(kindicator),
         inAsyncCall: isLoading,
         child: Scaffold(
-          backgroundColor: kPrimaryColor,
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+          body: Container(
+            decoration: const BoxDecoration(
+              color: ColorApp.kPrimaryColor,
+                image: DecorationImage(
+                    image: AssetImage(kLogoscreen), fit: BoxFit.fill)),
             child: Form(
               key: formKey,
               child: ListView(
                 children: [
-                  SizedBox(
-                    height: 75,
-                  ),
                   Image.asset(
-                    'assets/images/scholar.png',
-                    height: 100,
+                    kLogo,
+                    height: 200,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Scholar Chat',
-                        style: TextStyle(
-                          fontSize: 32,
-                          color: Colors.white,
-                          fontFamily: 'pacifico',
-                        ),
-                      ),
-                    ],
+                  Center(
+                    child: Text(
+                      'Wellcome to Chato',
+                    style: Theme.of(context).textTheme.titleMedium,
+                    ),
                   ),
-                  SizedBox(
-                    height: 75,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'LOGIN',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  Box(size: 120),
                   CustomFormTextField(
+                    obscureText: false,
                     onChanged: (data) {
                       email = data;
                     },
                     hintText: 'Email',
-                  ),
-                  SizedBox(
-                    height: 10,
                   ),
                   CustomFormTextField(
                     obscureText: true,
@@ -111,32 +96,25 @@ class LoginPage extends StatelessWidget {
                     },
                     hintText: 'Password',
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  Box(size: 20),
                   CustomButon(
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
                         Cubit.loginUser(email: email!, password: password!);
-
-                      } else {
-                      }
+                      } else {}
                     },
                     text: 'LOGIN',
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  CustomButon(
-                    onTap: ()  {
-
+                  Box(size: 20),
+                  signInWithText(),
+                  Box(size: 20),
+                  GoogleButon(
+                    onTap: () {
                       Cubit.handleGoogleBtnClick();
-                      },
-                    text: 'LOGIN with google',
+                    },
+                    text: 'Sgin In With Google',
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  Box(size: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -159,6 +137,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Box(size: 20),
                 ],
               ),
             ),
@@ -167,6 +146,4 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
-
 }

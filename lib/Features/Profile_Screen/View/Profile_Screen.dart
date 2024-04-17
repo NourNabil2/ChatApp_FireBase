@@ -14,7 +14,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 
 
+import '../../../Core/Functions/CashSaver.dart';
 import '../../../Core/Functions/show_snack_bar.dart';
+import '../../../Core/Utils/Colors.dart';
 import '../../../Core/Utils/constants.dart';
 import '../../Home_Screen/Data/Users.dart';
 
@@ -40,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: kPrimaryColor,
+        backgroundColor: ColorApp.kPrimaryColor,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -67,6 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 //sign out from app
                 await APIs.auth.signOut().then((value) async {
                   await GoogleSignIn().signOut().then((value) {
+                    CashSaver.SaveData(key: 'Login', value: false);
                     APIs.auth = FirebaseAuth.instance;
                     //replacing home screen with login screen
                     Navigator.pushNamedAndRemoveUntil(context, LoginPage.id , (route) => false);

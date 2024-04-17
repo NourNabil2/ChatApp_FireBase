@@ -7,6 +7,7 @@ attr buttonSize
 attr circleCrop
 attr clearTop
 attr colorScheme
+attr coordinatorLayoutStyle
 attr finishPrimaryWithSecondary
 attr finishSecondaryWithPrimary
 attr font
@@ -22,7 +23,14 @@ attr fontVariationSettings
 attr fontWeight
 attr imageAspectRatio
 attr imageAspectRatioAdjust
+attr keylines
 attr lStar
+attr layout_anchor
+attr layout_anchorGravity
+attr layout_behavior
+attr layout_dodgeInsetEdges
+attr layout_insetEdge
+attr layout_keyline
 attr nestedScrollViewStyle
 attr placeholderActivityName
 attr primaryActivityName
@@ -35,6 +43,7 @@ attr splitLayoutDirection
 attr splitMinSmallestWidth
 attr splitMinWidth
 attr splitRatio
+attr statusBarBackground
 attr ttcIndex
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
@@ -57,6 +66,9 @@ color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
 color notification_action_color_filter
 color notification_icon_bg_color
+color notification_material_background_media_default_color
+color primary_text_default_material_dark
+color secondary_text_default_material_dark
 dimen browser_actions_context_menu_max_width
 dimen browser_actions_context_menu_min_padding
 dimen compat_button_inset_horizontal_material
@@ -81,6 +93,10 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen subtitle_corner_radius
+dimen subtitle_outline_width
+dimen subtitle_shadow_offset
+dimen subtitle_shadow_radius
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -154,6 +170,7 @@ id accessibility_custom_action_6
 id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
+id action0
 id action_container
 id action_divider
 id action_image
@@ -161,39 +178,57 @@ id action_text
 id actions
 id adjust_height
 id adjust_width
+id all
 id androidx_window_activity_scope
 id async
 id auto
 id blocking
+id bottom
 id browser_actions_header_text
 id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id cancel_action
+id center
+id center_horizontal
+id center_vertical
 id chronometer
+id clip_horizontal
+id clip_vertical
 id dark
 id dialog_button
+id end
+id end_padder
+id fill
+id fill_horizontal
+id fill_vertical
 id forever
 id icon
 id icon_group
 id icon_only
 id info
 id italic
+id left
 id light
 id line1
 id line3
 id locale
 id ltr
+id media_actions
 id none
 id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
 id report_drawn
+id right
 id right_icon
 id right_side
 id rtl
 id standard
+id start
+id status_bar_latest_event_content
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -211,11 +246,13 @@ id text
 id text2
 id time
 id title
+id top
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id wide
+integer cancel_button_image_alpha
 integer google_play_services_version
 integer status_bar_notification_info_maxnum
 layout browser_actions_context_menu_page
@@ -223,8 +260,17 @@ layout browser_actions_context_menu_row
 layout custom_dialog
 layout notification_action
 layout notification_action_tombstone
+layout notification_media_action
+layout notification_media_cancel_action
+layout notification_template_big_media
+layout notification_template_big_media_custom
+layout notification_template_big_media_narrow
+layout notification_template_big_media_narrow_custom
 layout notification_template_custom_big
 layout notification_template_icon_group
+layout notification_template_lines_media
+layout notification_template_media
+layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 mipmap ic_launcher
@@ -265,15 +311,23 @@ style LaunchTheme
 style NormalTheme
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
+style TextAppearance_Compat_Notification_Info_Media
 style TextAppearance_Compat_Notification_Line2
+style TextAppearance_Compat_Notification_Line2_Media
+style TextAppearance_Compat_Notification_Media
 style TextAppearance_Compat_Notification_Time
+style TextAppearance_Compat_Notification_Time_Media
 style TextAppearance_Compat_Notification_Title
+style TextAppearance_Compat_Notification_Title_Media
 style Widget_Compat_NotificationActionContainer
 style Widget_Compat_NotificationActionText
+style Widget_Support_CoordinatorLayout
 styleable ActivityFilter activityAction activityName
 styleable ActivityRule alwaysExpand
 styleable Capability queryPatterns shortcutMatchRequired
 styleable ColorStateListItem android_color android_alpha android_lStar alpha lStar
+styleable CoordinatorLayout keylines statusBarBackground
+styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY

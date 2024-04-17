@@ -45,9 +45,15 @@ dependencies:
   cloud_firestore:
   firebase_storage:
   firebase_messaging:
+  flutter_notification_channel: ^2.0.0
   cached_network_image:
   image_picker:
   emoji_picker_flutter: 1.5.1
+  gallery_saver: ^2.3.2
+  google_fonts:
+  flutter_svg:
+  carousel_slider:
+  shimmer: ^3.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -73,6 +79,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/indicator/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

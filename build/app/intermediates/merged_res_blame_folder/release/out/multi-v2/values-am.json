@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.chats.app-mergeReleaseResources-27:/values-am/values-am.xml",
+            "outputFile": "com.example.chats.app-mergeReleaseResources-29:/values-am/values-am.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nour6\\.gradle\\caches\\transforms-3\\1b9e6c9ca871cab036b5488721264692\\transformed\\browser-1.4.0\\res\\values-am\\values-am.xml",

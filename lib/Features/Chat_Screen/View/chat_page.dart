@@ -291,16 +291,15 @@ class _ChatPageState extends State<ChatPage> {
           MaterialButton(
             onPressed: () {
               if (controller.text.isNotEmpty) {
-                APIs.sendMessage(
-                    widget.user, controller.text, Type.text);
+
                 if (messagesList.isEmpty) {
-                  // //on first message (add user to my_user collection of chat user)
-                  // APIs.sendFirstMessage(
-                  //     widget.user, _textController.text, Type.text);
+                  //on first message (add user to my_user collection of chat user)
+                  APIs.sendFirstMessage(
+                      widget.user, controller.text, Type.text);
                 } else {
-                  //simply send message
-                  // APIs.sendMessage(
-                  //     widget.user, _textController.text, Type.text);
+                //  simply send message
+                  APIs.sendMessage(
+                      widget.user, controller.text, Type.text);
                 }
                 controller.text = '';
               }

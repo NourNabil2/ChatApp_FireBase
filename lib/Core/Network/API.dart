@@ -37,20 +37,20 @@ class APIs {
   // to return current user
   static User get user => auth.currentUser!;
 
-  // // for accessing firebase messaging (Push Notification)
-  // static FirebaseMessaging fMessaging = FirebaseMessaging.instance;
-  //
-  // // for getting firebase messaging token
-  // static Future<void> getFirebaseMessagingToken() async {
-  //   await fMessaging.requestPermission();
-  //
-  //   await fMessaging.getToken().then((t) {
-  //     if (t != null) {
-  //       me.pushToken = t;
-  //       log('Push Token: $t');
-  //     }
-  //   });
-  //
+  // for accessing firebase messaging (Push Notification)
+  static FirebaseMessaging fMessaging = FirebaseMessaging.instance;
+
+  // for getting firebase messaging token
+  static Future<void> getFirebaseMessagingToken() async {
+    await fMessaging.requestPermission();
+
+    await fMessaging.getToken().then((t) {
+      if (t != null) {
+        me.pushToken = t;
+        log('Push Token: $t');
+      }
+    });
+  }
   //   // for handling foreground messages
   //   // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
   //   //   log('Got a message whilst in the foreground!');
@@ -61,35 +61,35 @@ class APIs {
   //   //   }
   //   // });
   // }
-  // // for sending push notification
-  // static Future<void> sendPushNotification(
-  //     ChatUser chatUser, String msg) async {
-  //   try {
-  //     final body = {
-  //       "to": chatUser.pushToken,
-  //       "notification": {
-  //         "title": me.name, //our name should be send
-  //         "body": msg,
-  //         "android_channel_id": "chats"
-  //       },
-  //       // "data": {
-  //       //   "some_data": "User ID: ${me.id}",
-  //       // },
-  //     };
-  //
-  //     var res = await post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
-  //         headers: {
-  //           HttpHeaders.contentTypeHeader: 'application/json',
-  //           HttpHeaders.authorizationHeader:
-  //           'key=AAAAQ0Bf7ZA:APA91bGd5IN5v43yedFDo86WiSuyTERjmlr4tyekbw_YW6JrdLFblZcbHdgjDmogWLJ7VD65KGgVbETS0Px7LnKk8NdAz4Z-AsHRp9WoVfArA5cNpfMKcjh_MQI-z96XQk5oIDUwx8D1'
-  //         },
-  //         body: jsonEncode(body));
-  //     log('Response status: ${res.statusCode}');
-  //     log('Response body: ${res.body}');
-  //   } catch (e) {
-  //     log('\nsendPushNotificationE: $e');
-  //   }
-  // }
+  // for sending push notification
+  static Future<void> sendPushNotification(
+      ChatUser chatUser, String msg) async {
+    try {
+      final body = {
+        "to": chatUser.pushToken,
+        "notification": {
+          "title": me.name, //our name should be send
+          "body": msg,
+          "android_channel_id": "chats"
+        },
+        // "data": {
+        //   "some_data": "User ID: ${me.id}",
+        // },
+      };
+
+      var res = await post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            HttpHeaders.authorizationHeader:
+            'key=AAAAq5paKI0:APA91bHrp5a_GWUbztUE-6KoV2f9HGWbXv02JyLFmU5RH_fu71D-FffK5bFUITkC2jdnnrjx0V-dgrxBmdPBneJihQsrhISj4yYDIDatwGIXgjPxlnwzxrzHFPVzQ0eix6oQ-z5zYlaj'
+          },
+          body: jsonEncode(body));
+      log('Response status: ${res.statusCode}');
+      log('Response body: ${res.body}');
+    } catch (e) {
+      log('\nsendPushNotificationE: $e');
+    }
+  }
 
 
   // for checking if user exists or not?
@@ -118,43 +118,42 @@ class APIs {
         .set(chatUser.toJson());
   }
 
-//
-  // // for adding an chat user for our conversation
-  // static Future<bool> addChatUser(String email) async {
-  //   final data = await firestore
-  //       .collection(kUsersCollections)
-  //       .where('email', isEqualTo: email)
-  //       .get();
-  //
-  //   log('data: ${data.docs}');
-  //
-  //   if (data.docs.isNotEmpty && data.docs.first.id != user.uid) {
-  //     //user exists
-  //
-  //     log('user exists: ${data.docs.first.data()}');
-  //
-  //     firestore
-  //         .collection(kUsersCollections)
-  //         .doc(user.uid)
-  //         .collection('my_users')
-  //         .doc(data.docs.first.id)
-  //         .set({});
-  //
-  //     return true;
-  //   } else {
-  //     //user doesn't exists
-  //
-  //     return false;
-  //   }
-  // }
-  //
+
+  // for adding an chat user for our conversation
+  static Future<bool> addChatUser(String email) async {
+    final data = await firestore
+        .collection(kUsersCollections)
+        .where('email', isEqualTo: email)
+        .get();
+
+    log('data: ${data.docs}');
+
+    if (data.docs.isNotEmpty && data.docs.first.id != user.uid) {
+      //user exists
+
+      log('user exists: ${data.docs.first.data()}');
+
+      firestore
+          .collection(kUsersCollections)
+          .doc(user.uid)
+          .collection('my_users')
+          .doc(data.docs.first.id)
+          .set({});
+
+      return true;
+    } else {
+      //user doesn't exists
+
+      return false;
+    }
+  }
+
   // for getting current user info
   static Future<void> getSelfInfo() async {
     await firestore.collection(kUsersCollections).doc(user.uid).get().then((user) async {
       if (user.exists) {
         me = ChatUser.fromJson(user.data()!);
-       // await getFirebaseMessagingToken();
-
+        await getFirebaseMessagingToken();
         //for setting user status to active
        APIs.updateActiveStatus(true);
 
@@ -188,17 +187,17 @@ class APIs {
         .snapshots();
   }
 
-  // // for adding an user to my user when first message is send
-  // static Future<void> sendFirstMessage(
-  //     ChatUser chatUser, String msg, Type type) async {
-  //   await firestore
-  //       .collection(kUsersCollections)
-  //       .doc(chatUser.id)
-  //       .collection('my_users')
-  //       .doc(user.uid)
-  //       .set({}).then((value) => sendMessage(chatUser, msg, type));
-  // }
-  //
+  // for adding an user to my user when first message is send
+  static Future<void> sendFirstMessage(
+      ChatUser chatUser, String msg, Type type) async {
+    await firestore
+        .collection(kUsersCollections)
+        .doc(chatUser.id)
+        .collection('my_users')
+        .doc(user.uid)
+        .set({}).then((value) => sendMessage(chatUser, msg, type));
+  }
+
   // for updating user information
   static Future<void> updateUserInfo() async {
     await firestore.collection(kUsersCollections).doc(user.uid).update({
@@ -286,9 +285,8 @@ class APIs {
 
     final ref = firestore
         .collection('chats/${getConversationID(chatUser.id)}/messages/');
-    await ref.doc(time).set(message.toJson());
-        // .then((value) =>
-        // sendPushNotification(chatUser, type == Type.text ? msg : 'image'));
+    await ref.doc(time).set(message.toJson()).then((value) =>
+        sendPushNotification(chatUser, type == Type.text ? msg : 'image'));
   }
 
   //update read status of message
@@ -330,23 +328,23 @@ class APIs {
     await sendMessage(chatUser, imageUrl, Type.image);
   }
 
-  // //delete message
-  // static Future<void> deleteMessage(Message message) async {
-  //   await firestore
-  //       .collection('chats/${getConversationID(message.toId)}/messages/')
-  //       .doc(message.sent)
-  //       .delete();
-  //
-  //   if (message.type == Type.image) {
-  //     await storage.refFromURL(message.msg).delete();
-  //   }
-  // }
-  //
-  // //update message
-  // static Future<void> updateMessage(Message message, String updatedMsg) async {
-  //   await firestore
-  //       .collection('chats/${getConversationID(message.toId)}/messages/')
-  //       .doc(message.sent)
-  //       .update({'msg': updatedMsg});
-  // }
+  //delete message
+  static Future<void> deleteMessage(Message message) async {
+    await firestore
+        .collection('chats/${getConversationID(message.toId)}/messages/')
+        .doc(message.sent)
+        .delete();
+
+    if (message.type == Type.image) {
+      await storage.refFromURL(message.msg).delete();
+    }
+  }
+
+  //update message
+  static Future<void> updateMessage(Message message, String updatedMsg) async {
+    await firestore
+        .collection('chats/${getConversationID(message.toId)}/messages/')
+        .doc(message.sent)
+        .update({'msg': updatedMsg});
+  }
 }

@@ -42,6 +42,18 @@
 @import firebase_storage;
 #endif
 
+#if __has_include(<flutter_notification_channel/FlutterNotificationChannelPlugin.h>)
+#import <flutter_notification_channel/FlutterNotificationChannelPlugin.h>
+#else
+@import flutter_notification_channel;
+#endif
+
+#if __has_include(<gallery_saver/GallerySaverPlugin.h>)
+#import <gallery_saver/GallerySaverPlugin.h>
+#else
+@import gallery_saver;
+#endif
+
 #if __has_include(<google_sign_in_ios/FLTGoogleSignInPlugin.h>)
 #import <google_sign_in_ios/FLTGoogleSignInPlugin.h>
 #else
@@ -81,6 +93,8 @@
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
   [FLTFirebaseMessagingPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseMessagingPlugin"]];
   [FLTFirebaseStoragePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseStoragePlugin"]];
+  [FlutterNotificationChannelPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterNotificationChannelPlugin"]];
+  [GallerySaverPlugin registerWithRegistrar:[registry registrarForPlugin:@"GallerySaverPlugin"]];
   [FLTGoogleSignInPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleSignInPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [PathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"PathProviderPlugin"]];

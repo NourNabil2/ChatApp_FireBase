@@ -14,7 +14,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 
 
+import '../../../Core/Functions/Time_Format.dart';
 import '../../../Core/Functions/show_snack_bar.dart';
+import '../../../Core/Utils/Colors.dart';
 import '../../../Core/Utils/constants.dart';
 import '../../Home_Screen/Data/Users.dart';
 
@@ -40,7 +42,7 @@ class _ProfileScreenState extends State<Porfile_Other_Users> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: kPrimaryColor,
+          backgroundColor: ColorApp.kPrimaryColor,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -53,7 +55,24 @@ class _ProfileScreenState extends State<Porfile_Other_Users> {
           ),
           centerTitle: true,
         ),
-
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Joined On: ',
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15),
+            ),
+            Text(
+                Format_Time.getLastMessageTime(
+                    context: context,
+                    time: widget.user.createdAt,
+                    showYear: true),
+                style: const TextStyle(color: Colors.black54, fontSize: 15)),
+          ],
+        ),
         body:Form(
           key: _formKey,
           child: Padding(
@@ -99,7 +118,6 @@ class _ProfileScreenState extends State<Porfile_Other_Users> {
                   Text(
                      widget.user.about,
                   ),
-
                 ],
               ),
             ),
