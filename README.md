@@ -2,7 +2,7 @@
 ChatO is a modern and intuitive chat application designed for seamless and secure communication. Built using Flutter and Firebase, ChatO provides a rich messaging experience with real-time updates and robust features. Whether you're looking to chat with friends, share multimedia content, share stories and more, or keep track of your social interactions, ChatO has you covered.
 
 # 📸 View UI
-![Code Alpha Internship completion certificate](https://github.com/NourNabil2/Chat_App_FireBase/blob/main/image1.jpeg)
+![Bunner](https://github.com/NourNabil2/Chat_App_FireBase/blob/main/image1.jpeg)
 
 # 💡 Key Features:
 
